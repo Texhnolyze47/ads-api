@@ -1,8 +1,9 @@
 -- +goose Up
 CREATE TABLE pedido (
-    id INT PRIMARY KEY,
+    id UUID PRIMARY KEY,
     cantidad DOUBLE PRECISION NOT NULL,
-    fecha DATE,
-    id_cliente INT CONSTRAINT fk_cliente FOREIGN KEY (id_cliente)  REFERENCES cliente (id)
-
-)
+    fecha TIMESTAMP NOT NULL,
+    id_cliente UUID NOT NULL REFERENCES cliente (id) ON DELETE CASCADE
+);
+-- +goose Down
+DROP TABLE pedido;

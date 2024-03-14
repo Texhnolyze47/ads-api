@@ -1,6 +1,6 @@
 -- +goose Up
 CREATE TABLE cliente (
-    id               INT PRIMARY KEY,
+    id               UUID PRIMARY KEY,
     nombre           VARCHAR(100) NOT NULL,
     apellido_paterno VARCHAR(100) NOT NULL,
     apellido_materno VARCHAR(100) NOT NULL,
