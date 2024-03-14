@@ -1,8 +1,14 @@
 package controller
 
-import "github.com/labstack/echo/v4"
+import (
+	"comercial-api/internal/db"
+)
 
-func AddCliente(echo.Context) error {
+type apiConfig struct {
+	DB *db.Queries
+}
+
+func (apiCfg *apiConfig) CreateClient() error {
 
 	type Cliente struct {
 		Id              int    `json:"id"`
