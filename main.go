@@ -36,7 +36,7 @@ func main() {
 		e.Logger.Fatal("Error connecting to database")
 	}
 
-	apiCfg := db.ApiConfig{
+	apiCfg := db.Database{
 		DB: database.New(conn),
 	}
 

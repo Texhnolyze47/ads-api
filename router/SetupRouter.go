@@ -27,7 +27,7 @@ type Comercial struct {
 	Commision       float64 `json:"commision"`
 }
 
-func SetupRouter(cfg db.ApiConfig, e *echo.Echo) (*echo.Echo, error) {
+func SetupRouter(cfg db.Database, e *echo.Echo) (*echo.Echo, error) {
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
@@ -100,7 +100,7 @@ func SetupRouter(cfg db.ApiConfig, e *echo.Echo) (*echo.Echo, error) {
 	return e, nil
 }
 
-func listarNombresComerciales(cfg db.ApiConfig) echo.HandlerFunc {
+func listarNombresComerciales(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		listNameAd, err := cfg.DB.ONameADName(context.Background())
@@ -114,7 +114,7 @@ func listarNombresComerciales(cfg db.ApiConfig) echo.HandlerFunc {
 	}
 }
 
-func listarNombresSinA(cfg db.ApiConfig) echo.HandlerFunc {
+func listarNombresSinA(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		listNameNoA, err := cfg.DB.ANoStartName(context.Background())
 
@@ -127,7 +127,7 @@ func listarNombresSinA(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarNombresEspecificos(cfg db.ApiConfig) echo.HandlerFunc {
+func listarNombresEspecificos(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		listNameStart, err := cfg.DB.AStartName(context.Background())
@@ -141,7 +141,7 @@ func listarNombresEspecificos(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarClientesSegundoApellido(cfg db.ApiConfig) echo.HandlerFunc {
+func listarClientesSegundoApellido(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		listLastName, err := cfg.DB.LastNameNotNull(context.Background())
 
@@ -155,7 +155,7 @@ func listarClientesSegundoApellido(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func obtenerMayorComision(cfg db.ApiConfig) echo.HandlerFunc {
+func obtenerMayorComision(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		listMaxCommision, err := cfg.DB.MaxCommission(context.Background())
@@ -170,7 +170,7 @@ func obtenerMayorComision(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarComercialesComision(cfg db.ApiConfig) echo.HandlerFunc {
+func listarComercialesComision(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		listCommercials, err := cfg.DB.AdCommission(context.Background())
 
@@ -183,7 +183,7 @@ func listarComercialesComision(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarPedidosAnio2017(cfg db.ApiConfig) echo.HandlerFunc {
+func listarPedidosAnio2017(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		listProducts, err := cfg.DB.ListProducts2007(context.Background())
 
@@ -197,7 +197,7 @@ func listarPedidosAnio2017(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarIDsClientes(cfg db.ApiConfig) echo.HandlerFunc {
+func listarIDsClientes(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		listClients, err := cfg.DB.ListIDClientMakePurchase(context.Background())
 
@@ -211,7 +211,7 @@ func listarIDsClientes(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarPedidos(cfg db.ApiConfig) echo.HandlerFunc {
+func listarPedidos(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		listProducts, err := cfg.DB.ListProducts(context.Background())
@@ -226,7 +226,7 @@ func listarPedidos(cfg db.ApiConfig) echo.HandlerFunc {
 
 }
 
-func listarDosPedidosMayorValor(cfg db.ApiConfig) echo.HandlerFunc {
+func listarDosPedidosMayorValor(cfg db.Database) echo.HandlerFunc {
 
 	return func(c echo.Context) error {
 		twoOrders, err := cfg.DB.ListProductsLimitTwo(context.Background())

@@ -17,7 +17,7 @@ type Cliente struct {
 	Catergoria      int    `json:"categoria"`
 }
 
-func HandlerCreateClient(cfg db.ApiConfig) echo.HandlerFunc {
+func HandlerCreateClient(cfg db.Database) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var cliente Cliente
 		err := c.Bind(&cliente)
